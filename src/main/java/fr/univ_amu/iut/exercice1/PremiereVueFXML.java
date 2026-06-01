@@ -4,6 +4,8 @@ import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 
 /**
  * Exercice 1 : première vue décrite en FXML.
@@ -40,5 +42,12 @@ public class PremiereVueFXML extends Application {
     // 3. Créer une Scene avec ce Parent et la donner à primaryStage.
     //
     // 4. Ajouter un titre et show().
+
+    URL url = getClass().getResource("PremiereVueFXML.fxml");
+    BorderPane borderPane = FXMLLoader.load(url);
+    Scene scene = new Scene(borderPane);
+    primaryStage.setScene(scene);
+    primaryStage.setTitle("Première vue FXML");
+    primaryStage.show();
   }
 }
