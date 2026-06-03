@@ -6,7 +6,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.stage.Stage;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -19,11 +18,8 @@ import org.testfx.framework.junit5.Start;
 /**
  * Tests de l'exercice 4 - Coquille principale en FXML.
  *
- * <p>
- * Pour cliquer sur un item de menu sans manipuler la souris physique, on
- * récupère le {@link
- * MenuItem} en parcourant le {@link MenuBar} et on appelle directement
- * {@code item.fire()} dans
+ * <p>Pour cliquer sur un item de menu sans manipuler la souris physique, on récupère le {@link
+ * MenuItem} en parcourant le {@link MenuBar} et on appelle directement {@code item.fire()} dans
  * {@code robot.interact(...)}.
  */
 @ExtendWith(ApplicationExtension.class)
