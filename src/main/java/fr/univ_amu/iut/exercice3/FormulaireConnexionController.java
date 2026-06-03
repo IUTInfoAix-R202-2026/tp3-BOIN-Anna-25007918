@@ -69,31 +69,35 @@ public class FormulaireConnexionController {
     //      - computeValue() : retourne true si le mot de passe est trop court (< 8)
     //        OU ne contient pas de majuscule OU ne contient pas de chiffre.
     //    Puis : boutonOk.disableProperty().bind(motDePasseInvalide);
-    champMotDePasse.editableProperty().bind(
-      Bindings.greaterThanOrEqual(champIdentifiant.textProperty().length(), 6));
-      
-    boutonAnnuler.disableProperty().bind(
-      Bindings.and(
-      Bindings.equal(0, champIdentifiant.textProperty().length()),
-      Bindings.equal(0, champMotDePasse.textProperty().length())));
-      
-      BooleanBinding motDePasseInvalide = new BooleanBinding() {
-        {
-          super.bind(champMotDePasse.textProperty());
-        }
+    champMotDePasse
+        .editableProperty()
+        .bind(Bindings.greaterThanOrEqual(champIdentifiant.textProperty().length(), 6));
 
-        public boolean computeValue() {
-          String pwd = champMotDePasse.getText();
-          Boolean hasUpper = pwd.chars().anyMatch(Character::isUpperCase);
-          Boolean hasDigit = pwd.chars().anyMatch(Character::isDigit);
-          if (pwd.length() < 8 || !hasUpper || !hasDigit) {
-            return true;
+    boutonAnnuler
+        .disableProperty()
+        .bind(
+            Bindings.and(
+                Bindings.equal(0, champIdentifiant.textProperty().length()),
+                Bindings.equal(0, champMotDePasse.textProperty().length())));
+
+    BooleanBinding motDePasseInvalide =
+        new BooleanBinding() {
+          {
+            super.bind(champMotDePasse.textProperty());
           }
-          return false;
-        }
-      };
 
-      boutonOk.disableProperty().bind(motDePasseInvalide);
+          public boolean computeValue() {
+            String pwd = champMotDePasse.getText();
+            Boolean hasUpper = pwd.chars().anyMatch(Character::isUpperCase);
+            Boolean hasDigit = pwd.chars().anyMatch(Character::isDigit);
+            if (pwd.length() < 8 || !hasUpper || !hasDigit) {
+              return true;
+            }
+            return false;
+          }
+        };
+
+    boutonOk.disableProperty().bind(motDePasseInvalide);
   }
 
   /**
